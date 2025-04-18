@@ -10,7 +10,8 @@ body
 	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
 	font-size: 16px;
 	font-weight: 150;
-	margin: 0
+	margin: 0;
+	overflow-x: hidden;
 	
 }
 h1,h2
@@ -33,18 +34,6 @@ h3
 
 
 
-.col-1 { width: 8.33%}
-.col-2 { width: 16.66%}
-.col-3 { width: 25%}
-.col-4 { width: 33.33%}
-.col-5 { width:  41.66%}
-.col-6 { width:  50%}
-.col-7 { width:  58.33%}
-.col-8 { width:  66.66%}
-.col-9 { width: 75%}
-.col-10 { width:  83.33%}
-.col-11 { width:  91.66%}
-.col-12 { width: 100%}
 @media (min-width:600px)
 {
 	.col-md-1 { width: 8.33%}
@@ -88,10 +77,21 @@ h3
 	width: 100%;
 	margin:auto
 }
-@media(min-width:600px)
-{
-	.container{width: 90%;}
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+  h1 {
+    font-size: 24px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  .container {
+    padding: 10px;
+  }
 }
+
 @media(min-width:1000px)
 {
 	.container{width: 80%;}
@@ -109,13 +109,53 @@ h3
 .text-light-60{color: rgba(255,255,255,0.6)}
 .text-bold{font-weight: bold}
 
-.cover{position: relative}
+/*.cover{position: relative}
 .caption-cover{
 	width: 70%;
 	position: absolute;
 	left: 15%;
-	top: 35
+	top: 35%;
 }
+*/
+
+/* Make carousel-item relative so caption can be absolutely positioned inside */
+.cover {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Custom caption */
+.carousel-caption-custom {
+  position: absolute;
+  bottom: 10%; /* or use top: X% if muốn hiện ở trên */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.5); /* nền tối nhẹ */
+  color: white;
+  padding: 15px 20px;
+  width: 80%;
+  max-width: 800px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* Responsive text */
+.carousel-caption-custom h4,
+.carousel-caption-custom h5 {
+  font-size: 1rem;
+  margin: 0.3rem 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .carousel-caption-custom {
+    width: 90%;
+    font-size: 0.9rem;
+    bottom: 5%;
+    padding: 10px;
+  }
+}
+
 
 
 
@@ -239,13 +279,13 @@ nav ul li a:hover
 
 /* Mặc định: thiết bị nhỏ hơn 600px */
 .image-grid {
-  grid-template-columns: 1fr; /* 1 cột => 1 hình mỗi hàng */
+  grid-template-columns: 1fr; 
 }
 
 /* Khi màn hình >= 600px: 3 cột */
 @media (min-width: 600px) {
   .image-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 cột => 2 hàng */
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -295,15 +335,6 @@ nav ul li a:hover
 	
 }
 
-/*.close {
-  position: absolute;
-  top: 30px;
-  right: 50px;
-  color: #fff;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-}*/
 
 
 
